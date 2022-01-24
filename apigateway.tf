@@ -69,10 +69,13 @@ resource "aws_api_gateway_integration" "workmotion_post" {
 }
 
 resource "aws_api_gateway_deployment" "workmotion_dev" {
-  depends_on = [
-    aws_api_gateway_integration.workmotion_get
-  ]
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.workmotion_apigw.body))
+  }
 
+  lifecycle {
+    create_before_destroy = true
+  }
   rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
 }
 
