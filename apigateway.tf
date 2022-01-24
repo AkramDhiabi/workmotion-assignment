@@ -29,3 +29,15 @@ resource "aws_api_gateway_method" "workmotion_get" {
   resource_id   = aws_api_gateway_resource.workmotion_api.id
   rest_api_id   = aws_api_gateway_rest_api.workmotion_apigw.id
 }
+
+resource "aws_api_gateway_integration" "workmotion_get" {
+  rest_api_id             = aws_api_gateway_rest_api.workmotion_apigw.id
+  resource_id             = aws_api_gateway_resource.workmotion_api.id
+  http_method             = aws_api_gateway_method.workmotion_get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.workmotion_lambda.invoke_arn
+  request_templates = {                  # Not documented
+    "application/json" = "${file("./lambda-payload/workmotion_body_mapping.template")}"
+  }
+}
