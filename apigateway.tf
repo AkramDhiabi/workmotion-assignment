@@ -47,6 +47,13 @@ resource "aws_api_gateway_integration" "workmotion_get" {
   }
 }
 
+resource "aws_api_gateway_method_response" "get_200" {
+  rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
+  resource_id = aws_api_gateway_resource.workmotion_api.id
+  http_method = aws_api_gateway_method.workmotion_get.http_method
+  status_code = "200"
+}
+
 # POST method integration
 resource "aws_api_gateway_method" "workmotion_post" {
   authorization = "NONE"
@@ -66,6 +73,13 @@ resource "aws_api_gateway_integration" "workmotion_post" {
   request_templates = { # Not documented
     "application/json" = "${file("./lambda-payload/workmotion_body_mapping.tpl")}"
   }
+}
+
+resource "aws_api_gateway_method_response" "post_200" {
+  rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
+  resource_id = aws_api_gateway_resource.workmotion_api.id
+  http_method = aws_api_gateway_method.workmotion_post.http_method
+  status_code = "200"
 }
 
 resource "aws_api_gateway_deployment" "workmotion_dev" {
