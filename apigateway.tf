@@ -3,6 +3,12 @@ resource "aws_apigatewayv2_api" "workmotion_api" {
   protocol_type = "HTTP"
 }
 
+resource "aws_cloudwatch_log_group" "workmotion_api" {
+  name = "/aws/api_gw/${aws_apigatewayv2_api.workmotion_api.name}"
+
+  retention_in_days = 30
+}
+
 resource "aws_apigatewayv2_stage" "lambda" {
   api_id = aws_apigatewayv2_api.workmotion_api.id
 
