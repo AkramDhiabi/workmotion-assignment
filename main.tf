@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket         = "fs-terraform-app-state"
-    key            = "fs-terraform-app.tfstate"
+    bucket         = "fs-wm-app-state"
+    key            = "fs-wm-app.tfstate"
     region         = "eu-central-1"
     encrypt        = true
     dynamodb_table = "fs-wm-state"
