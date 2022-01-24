@@ -38,6 +38,6 @@ resource "aws_api_gateway_integration" "workmotion_get" {
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.workmotion_lambda.invoke_arn
   request_templates = {                  # Not documented
-    "application/json" = "${file("./lambda-payload/workmotion_body_mapping.template")}"
+    "application/json" = "${file("./lambda-payload/workmotion_body_mapping.tpl")}"
   }
 }
