@@ -37,8 +37,8 @@ locals {
   # add common_tags to be applied to all resources in this project
   common_tags = {
     Environment = terraform.workspace
-    Project     = var.project
-    Owner       = var.contact
+    Project     = "Workmotion"
+    Owner       = "dhiabi.akram@gmail.com"
     ManagedBy   = "Terraform"
 
   }
