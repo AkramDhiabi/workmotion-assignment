@@ -1,5 +1,8 @@
 resource "aws_api_gateway_rest_api" "workmotion_apigw" {
   name = "workmotion_apigw"
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 }
 
 resource "aws_cloudwatch_log_group" "workmotion_api" {
