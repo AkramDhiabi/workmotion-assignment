@@ -22,3 +22,10 @@ resource "aws_api_gateway_resource" "workmotion_api" {
   path_part   = "api"
   rest_api_id = aws_api_gateway_rest_api.workmotion_api.id
 }
+
+resource "aws_api_gateway_method" "workmotion_get" {
+  authorization = "NONE"
+  http_method   = "GET"
+  resource_id   = aws_api_gateway_resource.workmotion_api.id
+  rest_api_id   = aws_api_gateway_rest_api.workmotion_apigw.id
+}
