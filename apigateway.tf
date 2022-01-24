@@ -34,7 +34,7 @@ resource "aws_apigatewayv2_stage" "lambda" {
   }
 }
 
-resource "aws_lambda_permission" "api_gw" {
+resource "aws_lambda_permission" "apigw_workmotion_lambda" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.workmotion_lambda.function_name
