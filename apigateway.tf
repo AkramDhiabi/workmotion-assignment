@@ -69,6 +69,9 @@ resource "aws_api_gateway_integration" "workmotion_post" {
 }
 
 resource "aws_api_gateway_deployment" "workmotion_dev" {
+  depends_on = [
+    aws_api_gateway_integration.workmotion_get, aws_api_gateway_integration.workmotion_post
+  ]
   triggers = {
     redeployment = sha1(jsonencode(aws_api_gateway_rest_api.workmotion_apigw.body))
   }

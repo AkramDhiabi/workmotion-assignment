@@ -11,3 +11,6 @@ crash.log
 
 # example.tfvars
 terraform.tfvars
+
+#temp files
+workmotion-lambda.zip
