@@ -49,3 +49,9 @@ resource "aws_api_gateway_deployment" "workmotion_dev" {
 
   rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
 }
+
+resource "aws_api_gateway_stage" "workmotion_dev" {
+  deployment_id = aws_api_gateway_deployment.workmotion_dev.id
+  rest_api_id   = aws_api_gateway_rest_api.workmotion_apigw.id
+  stage_name    = "dev"
+}
