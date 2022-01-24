@@ -35,7 +35,8 @@ resource "aws_api_gateway_integration" "workmotion_get" {
   resource_id             = aws_api_gateway_resource.workmotion_api.id
   http_method             = aws_api_gateway_method.workmotion_get.http_method
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
+  type                    = "AWS"
+  passthrough_behavior    = "WHEN_NO_TEMPLATES"
   uri                     = aws_lambda_function.workmotion_lambda.invoke_arn
   request_templates = { # Not documented
     "application/json" = "${file("./lambda-payload/workmotion_body_mapping.tpl")}"
