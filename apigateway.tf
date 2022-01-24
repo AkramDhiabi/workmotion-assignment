@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "workmotion_apigw" {
-  name          = "workmotion_apigw"
+  name = "workmotion_apigw"
 }
 
 resource "aws_cloudwatch_log_group" "workmotion_api" {
@@ -37,7 +37,7 @@ resource "aws_api_gateway_integration" "workmotion_get" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.workmotion_lambda.invoke_arn
-  request_templates = {                  # Not documented
+  request_templates = { # Not documented
     "application/json" = "${file("./lambda-payload/workmotion_body_mapping.tpl")}"
   }
 }

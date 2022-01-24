@@ -18,7 +18,7 @@ resource "aws_lambda_function" "workmotion_lambda" {
 
 # Lambda workmotion_lambda IAM role and attached policies
 resource "aws_iam_role" "workmotion_lambda" {
-  name  = "workmotion_lambda"
+  name = "workmotion_lambda"
 
   assume_role_policy = <<EOF
 {
