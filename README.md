@@ -56,7 +56,13 @@ You can access and deploy to `$ENV` (production or development) as follow:
 ````
   docker-compose run --rm terraform apply
 ````
-
+4. Once the deployment is done, get the `deployment_invoke_url` from the `Terraform Apply` output step .
+5. Test the endpoint:
+````
+curl --header "Content-Type: application/json" \
+     --data '{"username":"xyz","password":"xyz"}' \
+     $deployment_invoke_url
+````
 ## Clean the Stack
 1. chose the environment `$ENV` you want to destroy:
 ````
