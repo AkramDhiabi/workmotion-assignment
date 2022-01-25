@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "TerraformRequiredPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:*",
+                "s3:*",
+                "lambda:*",
+                "apigateway:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowStateLockingAccess",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:GetItem"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:*:*:table/fs-wm-state"
+            ]
+        },
+        {
+            "Sid": "AllowS3StateBucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::fs-wm-app-state/*"
+            ]
+        }
+    ]
+}
