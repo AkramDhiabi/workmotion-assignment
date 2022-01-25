@@ -4,12 +4,9 @@ Implement infrastructure as code (IaC) for a simple web application that runs on
 
 ## Implementation overview
 The client makes a call to an HTTP endpoint sends requests that are intercepted by API gateway which will take care of managing the traffic of the request. It will send the request to AWS Lambda which will print back the custom payload.
+- Deployment region: `eu-central-1`
 
 ## Prerequisites
-
-#### Create AWS resources
-1. an S3 bucket to host terraform state named `fs-wm-app-state`
-2. A DynamoDB table to handle state locking named `fs-wm-state` and should have primary key `LOCK_ID`
 
 #### Install AWS CLI
 1. [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
@@ -19,6 +16,10 @@ The client makes a call to an HTTP endpoint sends requests that are intercepted 
 4. Select **Security Credentials**
 5. Select **Access Key ID** and **Secret access key**
 6. Configure AWS CLI, run `aws configure` using above parameters.
+
+#### Create AWS resources on from AWS console - region eu-central-1
+1. an S3 bucket to host terraform state named `fs-wm-app-state`
+2. A DynamoDB table to handle state locking named `fs-wm-state` and should have primary key `LOCK_ID`
 
 #### Install Docker
 You will need to install [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/) to get the app running locally in your machine.
