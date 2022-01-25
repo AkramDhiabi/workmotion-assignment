@@ -32,3 +32,7 @@ jobs:
     - name: select workspace
       if: github.ref == 'refs/heads/main'
       run: terraform workspace select production || terraform workspace new production
+    
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color -lock=false
