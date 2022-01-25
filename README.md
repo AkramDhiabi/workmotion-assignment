@@ -34,7 +34,7 @@ We have one main github actions workflow that is triggered on push to main or to
 
 #### Test the stack on Github
 1. Use `main` or create `developer` branch, make a push event and watch the deployment to the associated environment.
-2. Once the deployment is done, get the `deployment_invoke_url` from the `Terraform Apply` step 
+2. Once the deployment is done, get the `deployment_invoke_url` from the `Terraform Apply` output step .
 3. Test the endpoint:
 ````
 curl --header "Content-Type: application/json" \
@@ -44,29 +44,29 @@ curl --header "Content-Type: application/json" \
 
 ## Local implementation
 You can access and deploy to `$ENV` (production or development) as follow:
-1. chose the environment you want to destroy
+1. chose the environment you want to destroy:
 ````
   docker-compose run --rm terraform workspace select $ENV
 ````
-2. Plan the whole stack
+2. Plan the whole stack:
 ````
   docker-compose run --rm terraform plan
 ````
-3. Apply the whole stack
+3. Apply the whole stack:
 ````
   docker-compose run --rm terraform apply
 ````
 
 ## Clean the Stack
-1. chose the environment $ENV you want to destroy
+1. chose the environment $ENV you want to destroy:
 ````
   docker-compose run --rm terraform workspace select $ENV
 ````
-2. destroy the whole stack
+2. destroy the whole stack:
 ````
   docker-compose run --rm terraform destroy
 ````
-3. Delete the workspace
+3. Delete the workspace:
 ````
   docker-compose run --rm terraform workspace select default
   docker-compose run --rm terraform workspace delete $ENV
