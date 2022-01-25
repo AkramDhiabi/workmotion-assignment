@@ -7,6 +7,10 @@ The client makes a call to an HTTP endpoint sends requests that are intercepted 
 
 ## Prerequisites
 
+#### Create AWS resources
+1. an S3 bucket to host terraform state named `fs-wm-app-state`
+2. A DynamoDB table to handle state locking named `fs-wm-state` and should have primary key `LOCK_ID`
+
 #### Install AWS CLI
 1. [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 2. Get AWS CLI credentials
