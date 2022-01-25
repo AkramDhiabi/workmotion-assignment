@@ -23,7 +23,7 @@ You will need to install [Docker](https://docs.docker.com/engine/installation/) 
 1. Go to [AWS Console: IAM](https://console.aws.amazon.com/iamv2/home#/users)
 2. Select **Add users** with only access type `Access key - Programmatic access`
 3. Select **Next Permissions**
-4. Select **Create policy** and give the user the custom permission inside `github-policy/github-policy.json`
+4. Select **Create policy** and give the user the custom IAM permission inside `github-policy/github-policy.json`
 5. Select **Access Key ID** and  **Secret access key**
 6. Create two github secrets `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` using above parameters.
 
