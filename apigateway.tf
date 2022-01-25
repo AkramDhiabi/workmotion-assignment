@@ -52,6 +52,9 @@ resource "aws_api_gateway_method_response" "get_200" {
   resource_id = aws_api_gateway_resource.workmotion_api.id
   http_method = aws_api_gateway_method.workmotion_get.http_method
   status_code = "200"
+  response_models = {
+    "application/json" = "Empty"
+  }
 }
 
 # POST method integration
