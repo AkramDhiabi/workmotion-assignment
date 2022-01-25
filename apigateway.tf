@@ -114,7 +114,13 @@ resource "aws_api_gateway_deployment" "workmotion_dev" {
     aws_api_gateway_integration.workmotion_get, aws_api_gateway_integration.workmotion_post
   ]
   triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.workmotion_apigw.body))
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.workmotion_api.id,
+      aws_api_gateway_method.workmotion_get.id,
+      aws_api_gateway_method.workmotion_post.id,
+      aws_api_gateway_integration.workmotion_get.id,
+      aws_api_gateway_integration.workmotion_post.id,
+    ]))
   }
 
   lifecycle {
