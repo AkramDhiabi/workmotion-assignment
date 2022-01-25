@@ -3,12 +3,7 @@ resource "aws_api_gateway_rest_api" "workmotion_apigw" {
   endpoint_configuration {
     types = ["REGIONAL"]
   }
-}
-
-resource "aws_cloudwatch_log_group" "workmotion_api" {
-  name = "/aws/api_gw/${aws_api_gateway_rest_api.workmotion_apigw.name}"
-
-  retention_in_days = 30
+  tags = local.common_tags
 }
 
 resource "aws_lambda_permission" "apigw_workmotion_lambda" {
@@ -133,4 +128,6 @@ resource "aws_api_gateway_stage" "workmotion_dev" {
   deployment_id = aws_api_gateway_deployment.workmotion_dev.id
   rest_api_id   = aws_api_gateway_rest_api.workmotion_apigw.id
   stage_name    = "dev"
+
+  tags_all = local.common_tags
 }
