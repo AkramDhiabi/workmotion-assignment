@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - develop
+      - developer
 
 env: 
   AWS_REGION: eu-central-1
@@ -12,7 +12,7 @@ env:
 jobs: 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/developer'
 
     steps:
     - uses: actions/checkout@v2
@@ -29,9 +29,13 @@ jobs:
       id: init
       run: terraform init
     
-    - name: select workspace
+    - name: select production workspace
       if: github.ref == 'refs/heads/main'
       run: terraform workspace select production || terraform workspace new production
+    
+    - name: select dev workspace
+      if: github.ref == 'refs/heads/developer'
+      run: terraform workspace select development || terraform workspace new development
     
     - name: Terraform Plan
       id: plan
