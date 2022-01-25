@@ -33,7 +33,7 @@ We have one main github actions workflow that is triggered on push to main or to
 -  If pushed to developer, a `development` deployment will be rolled out.
 
 #### Test the stack on Github
-Use main or create developer branch, make a push event and watch the deployment to the associated environment.
+Use `main` or create `developer` branch, make a push event and watch the deployment to the associated environment.
 
 ## Local implementation
 You can access and deploy to `$ENV` (production or development) as follow:
