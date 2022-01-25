@@ -28,7 +28,7 @@ You will need to install [Docker](https://docs.docker.com/engine/installation/) 
 6. Create two github secrets `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` using above parameters.
 
 ## CICD implementation
-We have one sample github actions workflow that is triggered on push to main or to developer branches and perform below scenarios:
+We have one main github actions workflow that is triggered on push to main or to developer branches and perform below scenarios:
 -  If pushed to main, a production deployment will be rolled out.
 -  If pushed to developer, a development deployment will be rolled out.
 
