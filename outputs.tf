@@ -5,5 +5,5 @@ output "function_name" {
 
 output "deployment_invoke_url" {
   description = "Deployment invoke url"
-  value       = aws_api_gateway_deployment.workmotion_dev.invoke_url
+  value       = aws_api_gateway_deployment.workmotion_deployment.invoke_url
 }
