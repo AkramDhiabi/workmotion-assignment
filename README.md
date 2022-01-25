@@ -58,7 +58,7 @@ You can access and deploy to `$ENV` (production or development) as follow:
 ````
 
 ## Clean the Stack
-1. chose the environment $ENV you want to destroy:
+1. chose the environment `$ENV` you want to destroy:
 ````
   docker-compose run --rm terraform workspace select $ENV
 ````
