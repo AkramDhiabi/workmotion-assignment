@@ -5,9 +5,9 @@ Implement infrastructure as code (IaC) for a simple web application that runs on
 # Implementation overview
 The client makes a call to an HTTP endpoint sends requests that are intercepted by API gateway which will take care of managing the traffic of the request. It will send the request to AWS Lambda which will print back the custom message.
 
-#### Prerequisites
+# Prerequisites
 
-# Install AWS CLI
+### Install AWS CLI
 1. [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 2. Get AWS CLI credentials
 3. Go to [AWS Console: IAM](https://console.aws.amazon.com/iam/home)
@@ -16,10 +16,10 @@ The client makes a call to an HTTP endpoint sends requests that are intercepted 
 5. Select **Access Key ID** and **Secret access key**
 6. Configure AWS CLI, run `aws configure` with the above parameters.
 
-# Install Docker
+### Install Docker
 You will need to install [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/) to get the app running locally in your machine.
 
-# Setup Github actions user
+### Setup Github actions user
 1. Go to [AWS Console: IAM](https://console.aws.amazon.com/iamv2/home#/users)
 2. Select **Add users** with only Access key - Programmatic access
 3. Select **Next Permissions**
@@ -27,15 +27,15 @@ You will need to install [Docker](https://docs.docker.com/engine/installation/) 
 5. Select **Access Key ID** and  **Secret access key**
 6. Create two github secrets AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY with the above parameters.
 
-#### CICD implementation
+# CICD implementation
 We have one sample github actions workflow that is triggered on push to main or to developer branches and perform below scenarios:
 -  If pushed to main, a production deployment will be rolled out.
 -  If pushed to developer, a development deployment will be rolled out.
 
-# Test the stack
+### Test the stack on Github
 Create a main and/or developer branch, make a push and watch the deployment to the associated environment.
 
-#### Local implementation
+# Local implementation
 You can access and deploy to $ENV (production or development) as follow:
 1. chose the environment you want to destroy
 ````
