@@ -108,6 +108,7 @@ resource "aws_api_gateway_integration_response" "post_200" {
   status_code = aws_api_gateway_method_response.post_200.status_code
 }
 
+# Api Gateway deployment
 resource "aws_api_gateway_deployment" "workmotion_dev" {
   depends_on = [
     aws_api_gateway_integration.workmotion_get, aws_api_gateway_integration.workmotion_post

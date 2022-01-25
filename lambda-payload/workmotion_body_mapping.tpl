@@ -7,4 +7,4 @@
       #end
     },
     "method": "$context.httpMethod"
-  }
+}
