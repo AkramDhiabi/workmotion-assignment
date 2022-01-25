@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "workmotion_apigw" {
-  name = "workmotion_apigw"
+  name = "${local.prefix}-workmotion_apigw"
   endpoint_configuration {
     types = ["REGIONAL"]
   }
@@ -104,7 +104,7 @@ resource "aws_api_gateway_integration_response" "post_200" {
 }
 
 # Api Gateway deployment
-resource "aws_api_gateway_deployment" "workmotion_dev" {
+resource "aws_api_gateway_deployment" "workmotion_deployment" {
   depends_on = [
     aws_api_gateway_integration.workmotion_get, aws_api_gateway_integration.workmotion_post
   ]
@@ -124,10 +124,10 @@ resource "aws_api_gateway_deployment" "workmotion_dev" {
   rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
 }
 
-resource "aws_api_gateway_stage" "workmotion_dev" {
-  deployment_id = aws_api_gateway_deployment.workmotion_dev.id
+resource "aws_api_gateway_stage" "workmotion_stage" {
+  deployment_id = aws_api_gateway_deployment.workmotion_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.workmotion_apigw.id
-  stage_name    = "dev"
+  stage_name    = "${local.prefix}"
 
   tags_all = local.common_tags
 }

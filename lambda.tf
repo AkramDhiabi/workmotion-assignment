@@ -7,7 +7,7 @@ data "archive_file" "zipit" {
 resource "aws_lambda_function" "workmotion_lambda" {
   depends_on       = [data.archive_file.zipit]
   filename         = "${path.module}/workmotion-lambda.zip"
-  function_name    = "printEvents"
+  function_name    = "${local.prefix}-printEvents"
   handler          = "index.handler"
   source_code_hash = data.archive_file.zipit.output_base64sha256
   runtime          = "nodejs14.x"
