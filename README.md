@@ -34,7 +34,7 @@ We have one main github actions workflow that is triggered on push to main or to
 
 #### Test the stack on Github
 1. Use `main` or create `developer` branch, make a push event and watch the deployment to the associated environment.
-2. Once the deployment is finished, get the `deployment_invoke_url` from the `Terraform Apply` step 
+2. Once the deployment is done, get the `deployment_invoke_url` from the `Terraform Apply` step 
 3. Test the endpoint:
 ````
 curl --header "Content-Type: application/json" \
