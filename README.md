@@ -17,7 +17,7 @@ The client makes a call to an HTTP endpoint sends requests that are intercepted 
 5. Select **Access Key ID** and **Secret access key**
 6. Configure AWS CLI, run `aws configure` using above parameters.
 
-#### Create AWS resources on from AWS console - region eu-central-1
+#### Create AWS resources on from AWS console
 1. an S3 bucket to host terraform state named `fs-wm-app-state`
 2. A DynamoDB table to handle state locking named `fs-wm-state` and should have primary key `LOCK_ID`
 
