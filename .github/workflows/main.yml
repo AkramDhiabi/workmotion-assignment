@@ -5,7 +5,7 @@ name: cd
 on:
   push:
     branches:
-      - master
+      - main
       - develop
 
 env: 
@@ -14,7 +14,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
 
     steps:
     - uses: actions/checkout@v2
