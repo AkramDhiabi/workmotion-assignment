@@ -58,6 +58,9 @@ resource "aws_api_gateway_method_response" "get_200" {
 }
 
 resource "aws_api_gateway_integration_response" "get_200" {
+  depends_on = [
+    aws_api_gateway_integration.workmotion_get
+  ]
   rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
   resource_id = aws_api_gateway_resource.workmotion_api.id
   http_method = aws_api_gateway_method.workmotion_get.http_method
@@ -96,6 +99,9 @@ resource "aws_api_gateway_method_response" "post_200" {
 }
 
 resource "aws_api_gateway_integration_response" "post_200" {
+  depends_on = [
+    aws_api_gateway_integration.workmotion_post
+  ]
   rest_api_id = aws_api_gateway_rest_api.workmotion_apigw.id
   resource_id = aws_api_gateway_resource.workmotion_api.id
   http_method = aws_api_gateway_method.workmotion_post.http_method
